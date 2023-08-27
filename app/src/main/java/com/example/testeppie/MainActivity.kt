@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     private lateinit var counterTextView: TextView
     private lateinit var increaseButton: Button
+    private lateinit var decreaseButton: Button
     private lateinit var resetButton: Button
 
     private var counter = 0
@@ -20,10 +21,16 @@ class MainActivity : AppCompatActivity() {
 
         counterTextView = findViewById(R.id.textView5)
         increaseButton = findViewById(R.id.increaseButton)
+        decreaseButton = findViewById(R.id.decreaseButton)
         resetButton = findViewById(R.id.resetButton)
 
         increaseButton.setOnClickListener {
             counter++
+            counterTextView.text = counter.toString()
+        }
+
+        decreaseButton.setOnClickListener {
+            counter--
             counterTextView.text = counter.toString()
         }
 

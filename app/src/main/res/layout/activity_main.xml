@@ -9,12 +9,12 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="204dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="360dp"
+        android:layout_width="377dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="568dp"
         android:gravity="center"
-        android:text="Hallo Youri"
+        android:text="Welcome to the test-app!"
         android:textColor="@color/black"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -38,14 +38,33 @@
 
     <Button
         android:id="@+id/increaseButton"
-        android:layout_width="61dp"
+        android:layout_width="80dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="228dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="#D4CACA"
         android:text="+"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.709"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/decreaseButton"
+        android:layout_width="80dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="228dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="#D4CACA"
+        android:text="-"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/increaseButton"
+        app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -53,10 +72,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:textSize="20dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="#D4CACA"
         android:text="Reset"
-        android:textStyle="bold"
         android:textAllCaps="false"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
