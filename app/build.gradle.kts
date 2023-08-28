@@ -67,6 +67,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     // Animations
     implementation("com.airbnb.android:lottie:6.1.0")
+    implementation("com.google.android.material:material:1.9.0")
 
     // TEST
     testImplementation("junit:junit:4.13.2")
