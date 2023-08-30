@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "485871253153",
+    "project_id": "testeppie",
+    "storage_bucket": "testeppie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485871253153:android:03a11dcb9d22bd4e5662e0",
+        "android_client_info": {
+          "package_name": "com.example.testeppie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485871253153-pqs02kvcasu8l39iemf5k6cr7qsermpn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPHdGBMC5kPiOcms4UwlEYAQ65IHs_mWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485871253153-pqs02kvcasu8l39iemf5k6cr7qsermpn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
