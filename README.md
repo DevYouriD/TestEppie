@@ -3,6 +3,10 @@
 The test app used to try different methods and technics within android (kotlin) development.  
 For questions, contact one of the developers.
 
+## ToDo
+- Add Db functionality
+- Add commenting page (annonymously?/ via account credentials?)
+
 ## Requirements
 
 - Your favorite IDE;
