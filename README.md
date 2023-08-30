@@ -1,3 +1,3 @@
 # ToDo
 - Add Db functionality
-- Add 
+- Add commenting page (annonymously?/ via account credentials?)
