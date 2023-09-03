@@ -31,8 +31,7 @@ public class ActivityWelcome extends AppCompatActivity {
     }
 
     public void onButtonSignUpClicked(View view) {
-        // DO nothing
-        // TODO create logic
+        startActivity(new Intent(ActivityWelcome.this, SignUpActivity.class));
     }
 
     public void onButtonSignInClicked(View view) {

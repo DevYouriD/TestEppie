@@ -41,7 +41,7 @@
         android:onClick="onButtonSignUpClicked"
         android:text="Sign up"
         android:textColor="#3E3D3D"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.11"
@@ -58,7 +58,7 @@
         android:onClick="onButtonSignInClicked"
         android:text="Sign in"
         android:textColor="#3E3D3D"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.89"
@@ -68,10 +68,8 @@
 
     <EditText
         android:id="@+id/emailInput"
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/teal_700"
+        android:layout_width="275dp"
+        android:layout_height="40dp"
         android:ems="9"
         android:inputType="textEmailAddress"
         android:text="placeholder@gmail.com"
@@ -85,10 +83,8 @@
 
     <EditText
         android:id="@+id/passwordInput"
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/teal_700"
+        android:layout_width="275dp"
+        android:layout_height="40dp"
         android:ems="9"
         android:inputType="textPassword"
         android:text="Password"
@@ -108,12 +104,10 @@
         android:text="Email address:"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.294"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/emailInput"
+        app:layout_constraintStart_toStartOf="@+id/emailInput"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintVertical_bias="0.95" />
 
     <TextView
         android:id="@+id/password"
@@ -122,11 +116,9 @@
         android:text="Password:"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.259"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/passwordInput"
+        app:layout_constraintStart_toStartOf="@+id/passwordInput"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
+        app:layout_constraintVertical_bias="0.98" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

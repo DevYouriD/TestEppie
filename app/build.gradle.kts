@@ -70,6 +70,7 @@ dependencies {
     implementation("com.airbnb.android:lottie:6.1.0")
     implementation("com.google.android.material:material:1.9.0")
     implementation("com.google.firebase:firebase-database-ktx:20.2.2")
+    implementation("com.google.firebase:firebase-auth-ktx:22.1.1")
 
     // TEST
     testImplementation("junit:junit:4.13.2")
