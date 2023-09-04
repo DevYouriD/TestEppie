@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testeppie.utils.SecretsManager;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,9 +20,12 @@ public class ActivityWelcome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        // Get the database connection URL
+        // Get the database connection URL (only for `us-central1` you don't need an url argument)
         Properties secretProperties = SecretsManager.loadSecretProperties(getApplicationContext());
         String dbUrl = secretProperties.getProperty("fire_base_url");
+
+        // Setup base firebase app
+        FirebaseApp.initializeApp(this);
 
         // Test connection to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance(dbUrl);

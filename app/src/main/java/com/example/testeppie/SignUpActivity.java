@@ -1,5 +1,6 @@
 package com.example.testeppie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,11 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testeppie.models.User;
+import com.example.testeppie.utils.SecretsManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Properties;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -25,6 +29,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
 
+    //TODO make this so it can be used form multiple locations.
+    private String dbUrl;
     private FirebaseAuth firebaseAuth;
 
 
@@ -39,6 +45,10 @@ public class SignUpActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.newPasswordInput);
         progressBar = findViewById(R.id.progressBar);
 
+        // Get the database connection URL (only for `us-central1` you don't need an url argument)
+        Properties secretProperties = SecretsManager.loadSecretProperties(getApplicationContext());
+
+        dbUrl = secretProperties.getProperty("fire_base_url");
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
@@ -78,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             User user = new User(txtUserName, txtPassword, txtPhone, txtEmail);
 
-                            FirebaseDatabase.getInstance().getReference("Users")
+                            FirebaseDatabase.getInstance(dbUrl).getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -86,6 +96,8 @@ public class SignUpActivity extends AppCompatActivity {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(SignUpActivity.this, "User created successfully", Toast.LENGTH_LONG).show();
                                                 progressBar.setVisibility(View.GONE);
+
+                                                startActivity(new Intent(SignUpActivity.this, ActivityWelcome.class));
                                             } else {
                                                 Toast.makeText(SignUpActivity.this, "Failed to create user", Toast.LENGTH_LONG).show();
                                                 progressBar.setVisibility(View.GONE);
