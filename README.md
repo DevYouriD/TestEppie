@@ -25,7 +25,8 @@ You need to meet the requirements to run the application or to develop with the 
 - Cleanup code, add directories, remove rendundant code;
 - Add default coding style, for example google code style;
 - Add tests (itest/ unit tests);
-- Add code quality checks (PMD, google non-prone, Checkstyle).
+- Add code quality checks (PMD, google non-prone, Checkstyle);
+- Add documentation in code - add javadocs.
 
 ## Extra
 

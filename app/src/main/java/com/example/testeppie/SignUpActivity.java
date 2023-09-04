@@ -20,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Properties;
 
+
+//TODO add javadoc and cleanup methodes
 public class SignUpActivity extends AppCompatActivity {
 
     EditText editTextUserName;
