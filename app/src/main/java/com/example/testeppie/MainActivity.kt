@@ -1,14 +1,15 @@
 package com.example.testeppie
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import com.example.testeppie.sqlite.SqliteActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var counterTextView: TextView
+    private lateinit var openDbPageButton: Button
     private lateinit var increaseButton: Button
     private lateinit var decreaseButton: Button
     private lateinit var resetButton: Button
@@ -19,10 +20,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        counterTextView = findViewById(R.id.textView5)
+        openDbPageButton = findViewById(R.id.openDbPageButton)
         increaseButton = findViewById(R.id.increaseButton)
         decreaseButton = findViewById(R.id.decreaseButton)
+        counterTextView = findViewById(R.id.textView5)
         resetButton = findViewById(R.id.resetButton)
+
+        openDbPageButton.setOnClickListener {
+            val intent = Intent(this, SqliteActivity::class.java)
+            startActivity(intent)
+        }
 
         increaseButton.setOnClickListener {
             counter++
