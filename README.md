@@ -17,11 +17,11 @@ You need to meet the requirements to run the application or to develop with the 
 ## ToDo (wishlist)
 
 - Add Db functionality;
-    - Firebase;
+    - <s>Firebase</s>;
         - User management.
             - Forgot password.
             - <s>Create user</s>;
-            - Authenticate user.
+            - <s>Authenticate user</s>.
     - SQL;
     - .....
 - Add commenting page (anonymously?/ via account credentials?);
