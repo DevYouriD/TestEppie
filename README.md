@@ -18,6 +18,10 @@ You need to meet the requirements to run the application or to develop with the 
 
 - Add Db functionality;
     - Firebase;
+        - User management.
+            - Forgot password.
+            - <s>Create user</s>;
+            - Authenticate user.
     - SQL;
     - .....
 - Add commenting page (anonymously?/ via account credentials?);

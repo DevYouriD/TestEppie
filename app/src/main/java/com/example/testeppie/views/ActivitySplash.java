@@ -1,4 +1,4 @@
-package com.example.testeppie;
+package com.example.testeppie.views;
 
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.testeppie.R;
 
 public class ActivitySplash extends AppCompatActivity {
 
@@ -17,13 +19,10 @@ public class ActivitySplash extends AppCompatActivity {
 
         getWindow().setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(ActivitySplash.this, ActivityWelcome.class));
+        new Handler().postDelayed(() -> {
+            startActivity(new Intent(ActivitySplash.this, ActivityWelcome.class));
 
-                finish();
-            }
+            finish();
         }, 3000);
     }
 }
