@@ -11,20 +11,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testeppie.R;
-import com.example.testeppie.utils.SecretsManager;
-import com.google.firebase.FirebaseApp;
+import com.example.testeppie.config.FirebaseConfiguration;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Properties;
-
 public class ActivityWelcome extends AppCompatActivity {
 
-    EditText editTextPassword;
-    EditText editTextEmail;
-    ProgressBar progressBar;
-
+    private EditText editTextPassword;
+    private EditText editTextEmail;
+    private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
 
 
@@ -40,18 +36,10 @@ public class ActivityWelcome extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar2);
 
         //TODO we need to get this one one place, i'm dubplicating code now :(.
-        firebaseAuth = FirebaseAuth.getInstance();
-
-
-        // Get the database connection URL (only for `us-central1` you don't need an url argument)
-        Properties secretProperties = SecretsManager.loadSecretProperties(getApplicationContext());
-        String dbUrl = secretProperties.getProperty("fire_base_url");
-
-        // Setup base firebase app
-        FirebaseApp.initializeApp(this);
+        firebaseAuth = FirebaseConfiguration.getFirebaseAuth();
 
         // Test connection to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance(dbUrl);
+        FirebaseDatabase database = FirebaseConfiguration.getFirebaseDatabase(this);
         DatabaseReference myRef = database.getReference("message");
 
         myRef.setValue("Hello, World! - connected");

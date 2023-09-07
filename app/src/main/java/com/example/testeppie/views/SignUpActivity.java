@@ -11,28 +11,25 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testeppie.R;
+import com.example.testeppie.config.FirebaseConfiguration;
 import com.example.testeppie.models.User;
-import com.example.testeppie.utils.SecretsManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
-import java.util.Properties;
 
 
 //TODO add javadoc and cleanup methodes
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText editTextUserName;
-    EditText editTextEmail;
-    EditText editTextPhone;
-    EditText editTextPassword;
+    private EditText editTextUserName;
+    private EditText editTextEmail;
+    private EditText editTextPhone;
+    private EditText editTextPassword;
+    private ProgressBar progressBar;
 
-    ProgressBar progressBar;
-
-    //TODO make this so it can be used form multiple locations.
-    private String dbUrl;
     private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase database;
 
 
     @Override
@@ -46,11 +43,8 @@ public class SignUpActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.newPasswordInput);
         progressBar = findViewById(R.id.progressBar);
 
-        // Get the database connection URL (only for `us-central1` you don't need an url argument)
-        Properties secretProperties = SecretsManager.loadSecretProperties(getApplicationContext());
-
-        dbUrl = secretProperties.getProperty("fire_base_url");
-        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseConfiguration.getFirebaseAuth();
+        database = FirebaseConfiguration.getFirebaseDatabase(this);
     }
 
     //TODO fix code quality, complexity of 17 needs to be lower as 15
@@ -92,7 +86,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             User user = new User(txtUserName, txtPassword, txtPhone, txtEmail);
 
-                            FirebaseDatabase.getInstance(dbUrl).getReference("Users")
+                            database.getReference("Users")
                                     .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                                     .setValue(user).addOnCompleteListener(task1 -> {
                                         if (task1.isSuccessful()) {
