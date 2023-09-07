@@ -16,18 +16,34 @@ import com.example.testeppie.utils.FirebaseUtil;
  */
 public class ActivitySplash extends AppCompatActivity {
 
+    private static final long SPLASH_DELAY = 3000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         FirebaseUtil.initializeFirebaseApp();
 
-        getWindow().setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
+        hideSystemUI();
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(ActivitySplash.this, ActivityWelcome.class));
+            openWelcomeActivity();
 
             finish();
-        }, 3000);
+        }, SPLASH_DELAY);
+    }
+
+    /**
+     * Open and go to the welcome activity.
+     */
+    private void openWelcomeActivity() {
+        startActivity(new Intent(ActivitySplash.this, ActivityWelcome.class));
+    }
+
+    /**
+     * Hide the system UI.
+     */
+    private void hideSystemUI() {
+        getWindow().setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
     }
 }

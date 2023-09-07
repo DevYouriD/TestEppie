@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testeppie.R;
 import com.example.testeppie.utils.FirebaseUtil;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,7 +23,6 @@ public class ActivityWelcome extends AppCompatActivity {
     private EditText editTextPassword;
     private EditText editTextEmail;
     private ProgressBar progressBar;
-    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -37,9 +35,6 @@ public class ActivityWelcome extends AppCompatActivity {
         editTextPassword = findViewById(R.id.passwordInput);
         //TODO change name of progressbar2 (possible to add the view after the name `progressbarWelcome` or some sort)
         progressBar = findViewById(R.id.progressBar2);
-
-        //TODO we need to get this one one place, i'm dubplicating code now :(.
-        firebaseAuth = FirebaseUtil.getFirebaseAuth();
 
         // Test connection to the database
         FirebaseDatabase database = FirebaseUtil.getFirebaseDatabase(this);
@@ -71,7 +66,7 @@ public class ActivityWelcome extends AppCompatActivity {
         if (!txtEmail.isEmpty() && !txtPassword.isEmpty()) {
             progressBar.setVisibility(View.VISIBLE);
 
-            firebaseAuth.signInWithEmailAndPassword(txtEmail, txtPassword).addOnCompleteListener(task -> {
+            FirebaseUtil.getFirebaseAuth().signInWithEmailAndPassword(txtEmail, txtPassword).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     Toast.makeText(ActivityWelcome.this, "Successfully signed in", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.VISIBLE);
