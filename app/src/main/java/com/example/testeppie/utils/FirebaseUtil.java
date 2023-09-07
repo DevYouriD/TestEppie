@@ -1,4 +1,4 @@
-package com.example.testeppie.config;
+package com.example.testeppie.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -12,32 +12,62 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class FirebaseConfiguration {
+/**
+ * Firebase util used to access firebase instances.
+ */
+public class FirebaseUtil {
 
-    private FirebaseConfiguration() {
+    /**
+     * The constructor.
+     */
+    private FirebaseUtil() {
         // Do nothing.
     }
 
+    /**
+     * Initialise the firebase application.
+     */
     public static void initializeFirebaseApp() {
         FirebaseApp.getInstance();
     }
 
+    /**
+     * Get the firebase authentication instance.
+     *
+     * @return The firebase authentication instance.
+     */
     public static FirebaseAuth getFirebaseAuth() {
         return FirebaseAuth.getInstance();
     }
 
+    /**
+     * Get the firebase database instance.
+     *
+     * @return The firebase database instance.
+     */
     public static FirebaseDatabase getFirebaseDatabase(Context context) {
         String dbUrl = getFirebaseDatabaseUrl(context);
+
+        // Only for `us-central1` you don't need a URL argument.
         return FirebaseDatabase.getInstance(dbUrl);
     }
 
+    /**
+     * Get the firebase database url.
+     * <p>This is needed to get the instance of the database when this isn't located in `us-central1`</p>
+     *
+     * @return The database URL.
+     */
     private static String getFirebaseDatabaseUrl(Context context) {
         Properties properties = loadSecretProperties(context);
-
-        // Get the database connection URL (only for `us-central1` you don't need a URL argument)
         return properties.getProperty("fire_base_url");
     }
 
+    /**
+     * Get the properties form the `secrets.properties` file.
+     *
+     * @return The properties.
+     */
     private static Properties loadSecretProperties(Context context) {
         Properties properties = new Properties();
         Resources resources = context.getResources();

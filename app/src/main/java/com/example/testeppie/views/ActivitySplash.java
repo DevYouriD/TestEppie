@@ -9,15 +9,18 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testeppie.R;
-import com.example.testeppie.config.FirebaseConfiguration;
+import com.example.testeppie.utils.FirebaseUtil;
 
+/**
+ * The view responsible of the splash animation.
+ */
 public class ActivitySplash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        FirebaseConfiguration.initializeFirebaseApp();
+        FirebaseUtil.initializeFirebaseApp();
 
         getWindow().setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
 

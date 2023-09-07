@@ -11,14 +11,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testeppie.R;
-import com.example.testeppie.config.FirebaseConfiguration;
 import com.example.testeppie.models.User;
+import com.example.testeppie.utils.FirebaseUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
 
+/**
+ * The view for registering new users.
+ */
 //TODO add javadoc and cleanup methodes
 public class SignUpActivity extends AppCompatActivity {
 
@@ -43,8 +46,8 @@ public class SignUpActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.newPasswordInput);
         progressBar = findViewById(R.id.progressBar);
 
-        firebaseAuth = FirebaseConfiguration.getFirebaseAuth();
-        database = FirebaseConfiguration.getFirebaseDatabase(this);
+        firebaseAuth = FirebaseUtil.getFirebaseAuth();
+        database = FirebaseUtil.getFirebaseDatabase(this);
     }
 
     //TODO fix code quality, complexity of 17 needs to be lower as 15

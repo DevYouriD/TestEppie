@@ -11,11 +11,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testeppie.R;
-import com.example.testeppie.config.FirebaseConfiguration;
+import com.example.testeppie.utils.FirebaseUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * The welcome view.
+ */
 public class ActivityWelcome extends AppCompatActivity {
 
     private EditText editTextPassword;
@@ -36,10 +39,10 @@ public class ActivityWelcome extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar2);
 
         //TODO we need to get this one one place, i'm dubplicating code now :(.
-        firebaseAuth = FirebaseConfiguration.getFirebaseAuth();
+        firebaseAuth = FirebaseUtil.getFirebaseAuth();
 
         // Test connection to the database
-        FirebaseDatabase database = FirebaseConfiguration.getFirebaseDatabase(this);
+        FirebaseDatabase database = FirebaseUtil.getFirebaseDatabase(this);
         DatabaseReference myRef = database.getReference("message");
 
         myRef.setValue("Hello, World! - connected");
