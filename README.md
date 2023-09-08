@@ -20,6 +20,7 @@ You need to meet the requirements to run the application or to develop with the 
     - <s>Firebase</s>;
         - User management.
             - Forgot password.
+            - Validate phone numbers (all input is now allowed).
             - <s>Create user</s>;
             - <s>Authenticate user</s>.
     - SQL;

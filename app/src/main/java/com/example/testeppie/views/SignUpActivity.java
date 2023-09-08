@@ -1,12 +1,16 @@
 package com.example.testeppie.views;
 
+import static com.example.testeppie.utils.ActivityStateUtil.handleSignIn;
+import static com.example.testeppie.utils.ValidationUtil.validateEmail;
+import static com.example.testeppie.utils.ValidationUtil.validatePassword;
+import static com.example.testeppie.utils.ValidationUtil.validatePhone;
+import static com.example.testeppie.utils.ValidationUtil.validateUsername;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,13 +26,12 @@ import java.util.Objects;
 /**
  * The view for registering new users.
  */
-//TODO add javadoc and cleanup methodes
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText editTextUserName;
-    private EditText editTextEmail;
-    private EditText editTextPhone;
-    private EditText editTextPassword;
+    private EditText usernameInputField;
+    private EditText emailInputField;
+    private EditText phoneInputField;
+    private EditText passwordInputField;
     private ProgressBar progressBar;
 
     private FirebaseAuth firebaseAuth;
@@ -40,71 +43,53 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        editTextUserName = findViewById(R.id.newUserInput);
-        editTextEmail = findViewById(R.id.newEmailInput);
-        editTextPhone = findViewById(R.id.newPhoneInput);
-        editTextPassword = findViewById(R.id.newPasswordInput);
-        progressBar = findViewById(R.id.progressBar);
+        usernameInputField = findViewById(R.id.userInputSignUp);
+        emailInputField = findViewById(R.id.emailInputSignUp);
+        phoneInputField = findViewById(R.id.phoneInputSignUp);
+        passwordInputField = findViewById(R.id.passwordInputSignUp);
+        progressBar = findViewById(R.id.progressBarSignUp);
 
         firebaseAuth = FirebaseUtil.getFirebaseAuth();
         database = FirebaseUtil.getFirebaseDatabase(this);
     }
 
-    //TODO fix code quality, complexity of 17 needs to be lower as 15
+    /**
+     * Sign up the user after the button is clicked.
+     */
     public void signupButtonClicked(View view) {
-        String txtUserName = editTextUserName.getText().toString().trim();
-        String txtEmail = editTextEmail.getText().toString().trim();
-        String txtPhone = editTextPhone.getText().toString().trim();
-        String txtPassword = editTextPassword.getText().toString().trim();
+        String usernameInput = usernameInputField.getText().toString().trim();
+        String emailInput = emailInputField.getText().toString().trim();
+        String phoneInput = phoneInputField.getText().toString().trim();
+        String passwordInput = passwordInputField.getText().toString().trim();
 
-        // Some simple validation for the fields
-        //TODO make simple validation methode
-        if (txtUserName.isEmpty()) {
-            editTextUserName.setError("Please enter UserName");
-            editTextUserName.requestFocus();
-        }
+        if (validateEmail(emailInput, emailInputField) &&
+                validatePassword(passwordInput, passwordInputField) &&
+                validateUsername(usernameInput, usernameInputField) &&
+                validatePhone(phoneInput, phoneInputField)) {
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) {
-            editTextEmail.setError("Please enter valid email address");
-            editTextEmail.requestFocus();
-        }
-
-        if (txtPassword.isEmpty() || txtPassword.length() < 6) {
-            editTextPassword.setError("Please enter password containing at least six characters");
-            editTextPassword.requestFocus();
-        }
-
-        if (txtPhone.isEmpty()) {
-            editTextPhone.setError("Please enter phone number");
-            editTextPhone.requestFocus();
-        }
-
-
-        if (!txtEmail.isEmpty() && !txtPassword.isEmpty() && !txtPhone.isEmpty() && !txtUserName.isEmpty()) {
             progressBar.setVisibility(View.VISIBLE);
 
-            firebaseAuth.createUserWithEmailAndPassword(txtEmail, txtPassword)
+            firebaseAuth.createUserWithEmailAndPassword(emailInput, passwordInput)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
 
-                            User user = new User(txtUserName, txtPassword, txtPhone, txtEmail);
+                            User user = new User(usernameInput, passwordInput, phoneInput, emailInput);
 
                             database.getReference("Users")
                                     .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                                    .setValue(user).addOnCompleteListener(task1 -> {
+                                    .setValue(user)
+                                    .addOnCompleteListener(task1 -> {
                                         if (task1.isSuccessful()) {
-                                            Toast.makeText(SignUpActivity.this, "User created successfully", Toast.LENGTH_LONG).show();
-                                            progressBar.setVisibility(View.GONE);
+                                            handleSignIn(this, progressBar, View.GONE, "User created successfully");
 
-                                            startActivity(new Intent(SignUpActivity.this, ActivityWelcome.class));
+                                            startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+                                            finish();
                                         } else {
-                                            Toast.makeText(SignUpActivity.this, "Failed to create user", Toast.LENGTH_LONG).show();
-                                            progressBar.setVisibility(View.GONE);
+                                            handleSignIn(this, progressBar, View.GONE, "Failed to create user");
                                         }
                                     });
                         } else {
-                            Toast.makeText(SignUpActivity.this, "Failed to create user", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
+                            handleSignIn(this, progressBar, View.GONE, "Failed to create user");
                         }
                     });
         }

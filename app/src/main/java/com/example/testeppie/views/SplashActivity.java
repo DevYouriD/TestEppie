@@ -14,7 +14,7 @@ import com.example.testeppie.utils.FirebaseUtil;
 /**
  * The view responsible of the splash animation.
  */
-public class ActivitySplash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     private static final long SPLASH_DELAY = 3000;
 
@@ -37,11 +37,12 @@ public class ActivitySplash extends AppCompatActivity {
      * Open and go to the welcome activity.
      */
     private void openWelcomeActivity() {
-        startActivity(new Intent(ActivitySplash.this, ActivityWelcome.class));
+        startActivity(new Intent(SplashActivity.this, SignInActivity.class));
     }
 
     /**
      * Hide the system UI.
+     * <p>Uses deprecated function's need to be fixed, don't bother for now.</p>
      */
     private void hideSystemUI() {
         getWindow().setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
