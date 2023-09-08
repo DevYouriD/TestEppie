@@ -16,21 +16,31 @@ You need to meet the requirements to run the application or to develop with the 
 
 ## ToDo (wishlist)
 
+### Functional
+
 - Add Db functionality;
     - <s>Firebase</s>;
         - User management.
-            - Forgot password.
-            - Validate phone numbers (all input is now allowed).
+            - Forgot password;
+            - Validate phone numbers (all input is now allowed);
             - <s>Create user</s>;
             - <s>Authenticate user</s>.
     - SQL;
     - .....
+- Add navigation menu.
+    - Add _about_ page;
+    - Add _account_ page.
+- _Main_ application functionality.
+
+### Non functional
+
 - Add commenting page (anonymously?/ via account credentials?);
 - Change java code to Kotlin or vise versa, but only use one language;
-- Cleanup code, add directories, remove rendundant code;
+- Cleanup code, add directories, remove redundant code;
 - Add default coding style, for example google code style;
 - Add tests (itest/ unit tests);
-- Add code quality checks (PMD, google non-prone, Checkstyle);
+- Add code quality checks (PMD, google non-prone, Checkstyle, _don't know what is used for android
+  apps_);
 - Add documentation in code - add javadocs.
 
 ## Extra
