@@ -5,10 +5,10 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
-import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testeppie.R
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SqliteActivity : AppCompatActivity() {
 
@@ -16,7 +16,7 @@ class SqliteActivity : AppCompatActivity() {
     private lateinit var et_age: EditText
     private lateinit var btn_add: Button
     private lateinit var btn_deleteAll: Button
-    private lateinit var sw_activeUser: Switch
+    private lateinit var sw_activeUser: SwitchMaterial
     private lateinit var lv_userList: ListView
 
     private lateinit var userArrayAdapter: ArrayAdapter<UserModel>
@@ -35,20 +35,17 @@ class SqliteActivity : AppCompatActivity() {
 
         dataBaseHelper = DataBaseHelper(this@SqliteActivity)
         updateListView(dataBaseHelper)
-        var userModel: UserModel?
+        var userModel: UserModel
 
         btn_add.setOnClickListener {
-            userModel = try {
-                UserModel(-1, et_name.text.toString(), et_age.text.toString().toInt(), sw_activeUser.isChecked)
+            try {
+                userModel = UserModel(-1, et_name.text.toString(), et_age.text.toString().toInt(), sw_activeUser.isChecked)
+                val success: Boolean = dataBaseHelper.addUser(userModel)
+                Toast.makeText(this@SqliteActivity, "Success = $success", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
-                //Toast.makeText(this@SqliteActivity, "Invalid format", Toast.LENGTH_SHORT).show()
-                UserModel(-1, "Error", 0, false)
+                Toast.makeText(this@SqliteActivity, "Invalid format, please fill in all fields", Toast.LENGTH_SHORT).show()
             }
-
             val dataBaseHelper = DataBaseHelper(this@SqliteActivity)
-            val success: Boolean = dataBaseHelper.addUser(userModel)
-            //Toast.makeText(this@SqliteActivity, "Success = $success", Toast.LENGTH_SHORT).show()
-
             updateListView(dataBaseHelper)
         }
 
