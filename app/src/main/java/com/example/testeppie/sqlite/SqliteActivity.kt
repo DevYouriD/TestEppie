@@ -13,10 +13,9 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 class SqliteActivity : AppCompatActivity() {
 
     private lateinit var et_name: EditText
-    private lateinit var et_age: EditText
+    private lateinit var et_password: EditText
     private lateinit var btn_add: Button
     private lateinit var btn_deleteAll: Button
-    private lateinit var sw_activeUser: SwitchMaterial
     private lateinit var lv_userList: ListView
 
     private lateinit var userArrayAdapter: ArrayAdapter<UserModel>
@@ -27,10 +26,9 @@ class SqliteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sqlite)
 
         et_name = findViewById(R.id.et_name)
-        et_age = findViewById(R.id.et_age)
+        et_password = findViewById(R.id.et_password)
         btn_add = findViewById(R.id.btn_add)
         btn_deleteAll = findViewById(R.id.btn_deleteAll)
-        sw_activeUser = findViewById(R.id.sw_active)
         lv_userList = findViewById(R.id.lv_userList)
 
         dataBaseHelper = DataBaseHelper(this@SqliteActivity)
@@ -39,7 +37,7 @@ class SqliteActivity : AppCompatActivity() {
 
         btn_add.setOnClickListener {
             try {
-                userModel = UserModel(-1, et_name.text.toString(), et_age.text.toString().toInt(), sw_activeUser.isChecked)
+                userModel = UserModel(-1, et_name.text.toString(), et_password.text.toString().toString())
                 val success: Boolean = dataBaseHelper.addUser(userModel)
                 Toast.makeText(this@SqliteActivity, "Success = $success", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {

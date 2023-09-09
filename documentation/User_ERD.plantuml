@@ -1,0 +1,21 @@
+@startuml
+
+skinparam linetype ortho
+
+entity "User" as user {
+  user_id : number <<PK>>
+  --
+  username : text
+  password : password
+}
+
+entity "Comment" as comment {
+  user_id : number <<FK>>
+  --
+  comment_content : text
+  timestamp : timestamp
+}
+
+user --o{ comment
+
+@enduml

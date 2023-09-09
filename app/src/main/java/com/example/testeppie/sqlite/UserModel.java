@@ -1,17 +1,17 @@
 package com.example.testeppie.sqlite;
 
+import androidx.annotation.NonNull;
+
 public class UserModel {
 
     private int id;
-    private String name;
-    private int age;
-    private boolean isActive;
+    private String username;
+    private String password;
 
-    public UserModel(int id, String name, int age, boolean isActive) {
+    public UserModel(int id, String username, String password) {
         this.id = id;
-        this.name = name;
-        this.age = age;
-        this.isActive = isActive;
+        this.username = username;
+        this.password = password;
     }
 
     public UserModel() {
@@ -21,41 +21,17 @@ public class UserModel {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
-        return name;
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getPassword() { return password; }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
+    @NonNull
     @Override
     public String toString() {
-        return "UserModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", isActive=" + isActive +
-                '}';
+        return "ID: " + id +
+                ",  Name: " + username +
+                ",  Password: " + password;
     }
 }

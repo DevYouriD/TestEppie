@@ -15,10 +15,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String USER_TABLE = "USER_TABLE";
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_USER_NAME = "USER_NAME";
-    public static final String COLUMN_USER_AGE = "USER_AGE";
-    public static final String COLUMN_ACTIVE_USER = "ACTIVE_USER";
+    public static final String COLUMN_USER_PASSWORD = "USER_PASSWORD";
+
     public static final String CREATE_TABLE_STATEMENT = "CREATE TABLE " + USER_TABLE + " (" +
-            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_NAME + " TEXT, " + COLUMN_USER_AGE + " INT, " + COLUMN_ACTIVE_USER + " BOOL)";
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USER_NAME + " TEXT, " + COLUMN_USER_PASSWORD + " INT)";
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "user.db", null, 1);
@@ -35,8 +35,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_USER_NAME, userModel.getName());
-        cv.put(COLUMN_USER_AGE, userModel.getAge());
-        cv.put(COLUMN_ACTIVE_USER, userModel.isActive());
+        cv.put(COLUMN_USER_PASSWORD, userModel.getPassword());
 
         long insert = db.insert(USER_TABLE, null, cv);
         return insert != -1;
@@ -65,10 +64,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             do {
                 int userId = cursor.getInt(0);
                 String userName = cursor.getString(1);
-                int userAge = cursor.getInt(2);
-                boolean userActive = cursor.getInt(3) == 1;
+                String userPassword = cursor.getString(2);
 
-                UserModel newUser = new UserModel(userId, userName, userAge, userActive);
+                UserModel newUser = new UserModel(userId, userName, userPassword);
                 returnList.add(newUser);
 
             }while (cursor.moveToNext());

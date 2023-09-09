@@ -67,6 +67,8 @@ dependencies {
     // Animations
     implementation("com.airbnb.android:lottie:6.1.0")
     implementation("com.google.android.material:material:1.9.0")
+    // Documentation
+    implementation("net.sourceforge.plantuml:plantuml:8059")
 
     // TEST
     testImplementation("junit:junit:4.13.2")
