@@ -6,7 +6,8 @@ For questions, contact one of the developers.
 
 ## Requirements
 
-You need to meet the requirements to run the application or to develop with the application.
+You need to meet the requirements to run the application or if you want to make changes to the
+project yourself.
 
 - Your favorite IDE;
 - Android SDK;
