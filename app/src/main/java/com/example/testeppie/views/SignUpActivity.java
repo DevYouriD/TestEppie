@@ -62,10 +62,10 @@ public class SignUpActivity extends AppCompatActivity {
         String phoneInput = phoneInputField.getText().toString().trim();
         String passwordInput = passwordInputField.getText().toString().trim();
 
-        if (validateEmail(emailInput, emailInputField) &&
-                validatePassword(passwordInput, passwordInputField) &&
-                validateUsername(usernameInput, usernameInputField) &&
-                validatePhone(phoneInput, phoneInputField)) {
+        if (validateUsername(usernameInput, usernameInputField) &&
+                validateEmail(emailInput, emailInputField) &&
+                validatePhone(phoneInput, phoneInputField) &&
+                validatePassword(passwordInput, passwordInputField)) {
 
             progressBar.setVisibility(View.VISIBLE);
 

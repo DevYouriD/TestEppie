@@ -1,6 +1,8 @@
 package com.example.testeppie.models;
 
 
+import androidx.annotation.NonNull;
+
 /**
  * The domain object used for user(s).
  */
@@ -10,6 +12,13 @@ public class User {
     public String email;
     public String phone;
     public String password;
+
+
+    /**
+     * Empty constructor.
+     */
+    public User() {
+    }
 
     /**
      * The constructor.
@@ -24,6 +33,17 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
 }

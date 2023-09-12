@@ -53,7 +53,8 @@ public class SignInActivity extends AppCompatActivity {
         /* If the email validation fails the password validation won't be called and the user only
          * sees a message at the email input field (even if the password is also incorrect).
          */
-        if (validateEmail(emailInput, emailInputField) && validatePassword(passwordInput, passwordInputField)) {
+        if (validateEmail(emailInput, emailInputField)
+                && validatePassword(passwordInput, passwordInputField)) {
             progressBar.setVisibility(View.VISIBLE);
 
             FirebaseUtil.getFirebaseAuth()
