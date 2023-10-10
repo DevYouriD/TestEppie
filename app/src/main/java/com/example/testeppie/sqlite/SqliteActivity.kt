@@ -8,7 +8,6 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testeppie.R
-import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SqliteActivity : AppCompatActivity() {
 
