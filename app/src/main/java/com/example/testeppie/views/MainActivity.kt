@@ -1,11 +1,10 @@
-package com.example.testeppie
+package com.example.testeppie.views
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import com.example.testeppie.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var counterTextView: TextView
