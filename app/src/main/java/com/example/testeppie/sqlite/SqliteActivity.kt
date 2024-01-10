@@ -56,7 +56,7 @@ class SqliteActivity : AppCompatActivity() {
             val selectedUser = parent.getItemAtPosition(position) as UserModel
             dataBaseHelper.deleteUser(selectedUser)
             updateListView(dataBaseHelper)
-            Toast.makeText(this@SqliteActivity, "Deleted $selectedUser", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this@SqliteActivity, "Deleted $selectedUser", Toast.LENGTH_SHORT).show()
         }
     }
     private fun updateListView(dataBaseHelper: DataBaseHelper) {
