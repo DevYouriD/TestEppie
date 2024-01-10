@@ -1,4 +1,4 @@
-package com.example.testeppie
+package com.example.testeppie.views
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testeppie.sqlite.SqliteActivity
+import com.example.testeppie.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var counterTextView: TextView
