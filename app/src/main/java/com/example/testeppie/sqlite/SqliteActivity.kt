@@ -1,13 +1,15 @@
 package com.example.testeppie.sqlite
 
-import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.testeppie.views.MainActivity
 import android.widget.ArrayAdapter
-import android.widget.Button
+import com.example.testeppie.R
 import android.widget.EditText
 import android.widget.ListView
+import android.content.Intent
+import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.example.testeppie.R
+import android.os.Bundle
 
 class SqliteActivity : AppCompatActivity() {
 
@@ -15,6 +17,7 @@ class SqliteActivity : AppCompatActivity() {
     private lateinit var et_password: EditText
     private lateinit var btn_add: Button
     private lateinit var btn_deleteAll: Button
+    private lateinit var returnToHomePageButton: Button
     private lateinit var lv_userList: ListView
 
     private lateinit var userArrayAdapter: ArrayAdapter<UserModel>
@@ -28,6 +31,7 @@ class SqliteActivity : AppCompatActivity() {
         et_password = findViewById(R.id.et_password)
         btn_add = findViewById(R.id.btn_add)
         btn_deleteAll = findViewById(R.id.btn_deleteAll)
+        returnToHomePageButton = findViewById(R.id.returnToHomePageButton)
         lv_userList = findViewById(R.id.lv_userList)
 
         dataBaseHelper = DataBaseHelper(this@SqliteActivity)
@@ -50,6 +54,11 @@ class SqliteActivity : AppCompatActivity() {
             dataBaseHelper = DataBaseHelper(this@SqliteActivity)
             dataBaseHelper.clearDb()
             updateListView(dataBaseHelper)
+        }
+
+        returnToHomePageButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         lv_userList.setOnItemClickListener { parent, _, position, _ ->
