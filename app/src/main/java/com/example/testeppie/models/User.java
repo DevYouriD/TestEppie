@@ -1,6 +1,5 @@
 package com.example.testeppie.models;
 
-
 import androidx.annotation.NonNull;
 
 /**
@@ -12,7 +11,6 @@ public class User {
     public String email;
     public String phone;
     public String password;
-
 
     /**
      * Empty constructor.
@@ -45,6 +43,5 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
-
 }
 

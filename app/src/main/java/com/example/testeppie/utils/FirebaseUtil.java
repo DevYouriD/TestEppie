@@ -73,6 +73,12 @@ public class FirebaseUtil {
         Resources resources = context.getResources();
 
         try {
+            // secrets.properties contents
+            // fire_base_url=http://testeppie-default-rtdb.europe-west1.firebasedatabase.app/
+            //
+            // Test User
+            // Username: testday2@gmail.com
+            // Password: Welkom01!
             InputStream inputStream = resources.openRawResource(R.raw.secrets);
             properties.load(inputStream);
 
