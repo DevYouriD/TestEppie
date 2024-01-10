@@ -38,7 +38,7 @@ class SqliteActivity : AppCompatActivity() {
             try {
                 userModel = UserModel(-1, et_name.text.toString(), et_password.text.toString().toString())
                 val success: Boolean = dataBaseHelper.addUser(userModel)
-                Toast.makeText(this@SqliteActivity, "Success = $success", Toast.LENGTH_SHORT).show()
+                // Toast.makeText(this@SqliteActivity, "Success = $success", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 Toast.makeText(this@SqliteActivity, "Invalid format, please fill in all fields", Toast.LENGTH_SHORT).show()
             }
