@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/teal_700">
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="333dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="188dp"
+        android:layout_width="377dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="568dp"
         android:gravity="center"
         android:text="Welcome to the test-app!"
+        android:textColor="@color/black"
         android:textSize="35dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +29,7 @@
         android:layout_marginBottom="312dp"
         android:gravity="center"
         android:text="0"
+        android:textColor="@color/black"
         android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
