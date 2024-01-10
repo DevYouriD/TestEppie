@@ -10,6 +10,7 @@ val materialVersion = "1.11.0"
 val firebaseDatabaseKtxVersion = "20.3.0"
 val firebaseAuthKtxVersion = "22.3.0"
 val jUnitVersion = "4.13.2"
+val plantUmlVersion = "8059"
 
 plugins {
     id("com.android.application")
@@ -80,14 +81,12 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout-compose:$constraintLayoutComposeVersion")
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
     // Animations
-    implementation("com.airbnb.android:lottie:6.1.0")
-    implementation("com.google.android.material:material:1.9.0")
     implementation("com.airbnb.android:lottie:$lottieVersion")
     implementation("com.google.android.material:material:$materialVersion")
     implementation("com.google.firebase:firebase-database-ktx:$firebaseDatabaseKtxVersion")
     implementation("com.google.firebase:firebase-auth-ktx:$firebaseAuthKtxVersion")
     // Documentation
-    implementation("net.sourceforge.plantuml:plantuml:8059")
+    implementation("net.sourceforge.plantuml:plantuml:$plantUmlVersion")
 
     // TEST
     testImplementation("junit:junit:$jUnitVersion")
